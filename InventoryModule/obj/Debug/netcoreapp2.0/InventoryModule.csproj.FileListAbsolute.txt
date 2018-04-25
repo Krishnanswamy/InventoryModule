@@ -1,0 +1,11 @@
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\bin\Debug\netcoreapp2.0\InventoryModule.deps.json
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\bin\Debug\netcoreapp2.0\InventoryModule.runtimeconfig.json
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\bin\Debug\netcoreapp2.0\InventoryModule.runtimeconfig.dev.json
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\bin\Debug\netcoreapp2.0\InventoryModule.dll
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\bin\Debug\netcoreapp2.0\InventoryModule.pdb
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.csprojResolveAssemblyReference.cache
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.csproj.CoreCompileInputs.cache
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.AssemblyInfoInputs.cache
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.AssemblyInfo.cs
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.dll
+c:\users\kicha\source\repos\InventoryModule\InventoryModule\obj\Debug\netcoreapp2.0\InventoryModule.pdb

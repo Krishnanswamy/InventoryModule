@@ -1,0 +1,80 @@
+﻿@model InventoryModule.Models.Masters.LedgerGroup
+@{
+    string id = ViewData["id"]?.ToString() ?? "0";
+}
+
+
+<h4>LedgerGroup</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="formLG" asp-antiforgery="true">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LedgerGroupName" class="control-label"></label>
+                <input asp-for="LedgerGroupName" id="LGName" class="form-control" />
+                <span asp-validation-for="LedgerGroupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<input type="submit" asp-route-id=@id value="Create" asp-controller="LedgerGroup" class="btn btn-default" />*@
+                <input type="button" id="submit1" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#submit1").click(function(e) {
+            e.preventDefault();
+            e.enable = false;
+           //debugger;
+           var ledgerGroup = $('#LedgerGroupName').val();
+
+            var addAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $("[name='__RequestVerificationToken']").val();
+                return data;
+            };
+
+            
+ 
+
+            var data = addAntiForgeryToken({ "LedgergrouId": 0, "LedgerGroupName": ledgerGroup, "id": @id});
+            //alert(data);
+           // debugger;
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '@(Url.Action("CreateGroup","LedgerGroup"))',
+                    datatype: 'json',
+                    data: data,
+          
+                    success: function(result) {
+                      
+                       var groupName = result.ledgerGroupName;
+                       var groupId = result.ledgerGroupId;;
+                        alert(result);
+                        //alert(groupId);
+                        $('#LedgerGroupName').val('');
+
+ 
+                        //Add it to the select list in Product Create Ledgergroup Dropdown.
+                        $('#LedgerGroupId').append(new Option(groupName, groupId));
+                         $('#LedgerGroupId').val(groupId);
+                    },
+                    error: function() {
+                        alert("Failed");
+                    }
+
+
+        });
+
+        });
+    });
+</script>
+
+
+
+

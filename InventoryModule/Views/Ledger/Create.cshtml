@@ -1,0 +1,106 @@
+﻿@model InventoryModule.Models.Masters.Ledger
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Create</h2>
+
+<h4>Ledger</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-antiforgery="true" id="fromLedger">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LedgerGroupId" class="control-label"></label>
+                <select asp-for="LedgerGroupId" class="form-control" asp-items="ViewBag.LedgerGroupId">
+                    <option value="0">--Select Group--</option>
+
+                </select>
+                <div class="modal fade" role="dialog" id="ModalCreate">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">x</button>
+                                <h4 class="modal-title">Create Product Group</h4>
+                            </div>
+                            <div class="modal-body" id="modelPartial">
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info btn-sm" id="btnModel">
+                    New Group
+                </button>
+            </div>
+            <div class="form-group">
+                <label asp-for="LedgerName" class="control-label"></label>
+                <input asp-for="LedgerName" class="form-control" />
+                <span asp-validation-for="LedgerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous"
+        integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnModel").click(function(e) {
+
+           
+            $.ajax({
+                type: 'Get',
+                url: '@(Url.Action("ShowPartial","Ledger"))',
+                success: function (respose) {
+                    $('#modelPartial').html(respose);
+                    $('#ModalCreate').modal('show');
+                },
+                cache: false
+            });
+        });
+    })
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
